@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('title', 'Locus Sports')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+@section('content')
+    <section class="banner">
+        <a href="{{url('/products')}}">
+            <img src="{{ asset('img/banner.jpeg') }}" alt="" class="img-fluid w-100">
+        </a>
+    </section>
+    
+    <section class="top-products">
+        <div class="container">
+        <h1 class="mt-3 mb-3 pt-2 pb-2"><b>MAIS VENDIDOS</b></h1>
+        <div class="row">
+        @foreach($products as $product)
+            <div class="col-md-3 pt-3">
+                
+                <a href="">
+                <div class="card border-0">
+                    
+                <img class="card-img-top" src="{{ url('storage/products/'.$product->image) }}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title text-left text-secondary">{{$product->name}}</h5>
+                        <h5 id="espaco" class="card-title text-center text-dark">R$ {{$product->price}}</h5>
+                                    
+                        <a type="button" id="preto" class="btn bg-orange btn-block" href="{{ url("products/$product->id/view") }}">
+                            Visualizar
+                        </a>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </a>
+                
             </div>
+            @endforeach
+                
+            </div>
+            
         </div>
-    </body>
-</html>
+
+    </section>
+
+    <hr>
+    
+    <section class="new-product pt-2 pb-2">
+        <div class="container">
+            <h1 class="mb-3 pb-2">LANÇAMENTO!!!</h1>
+            
+            <div class="row">
+                @foreach($productsone as $productone)
+                <div class="col-sm-5"> 
+                    <div class="image float-left">
+                        <img class="img-fluid" src="{{ url('storage/products/'.$productone->image) }}" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="py-5 mx-5 float-right">
+                        <h2 class="title">{{$productone->name}}</h2>
+                        <div class="text-right my-3">
+                            <h4 class="lead text-center mt-3">{{$productone->description}}</h4>
+                            
+                            <a href="{{ url("products/$productone->id/view") }}" class="btn bg-orange btn-lg mt-3 col-6">Saber mais ></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+        </div>    
+    </section>
+@endsection

@@ -1,0 +1,43 @@
+.banner {
+    width: 100%;
+    background-image: url(../img/banner.jpg);
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.bg-gray {
+    width: 100%;
+    /* height: 89.5vh; */
+    background-color: #d3d3d3;
+}
+
+.bg-orange {
+    background-color: #FE7235;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.text-orange {
+    color: #FE7235;
+    border: 1px solid #FE7235;
+    transition: background-color 0.3s; 
+}
+
+.bg-orange:hover {
+    background-color: #f75d1c;
+    opacity: 1.0;
+    color: #ffffff;
+}
+
+.text-orange:hover {
+    color: #f75d1c;
+    opacity: 1.0;
+    border: 1px solid #FE7235; 
+}
