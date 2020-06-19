@@ -18,7 +18,7 @@
 
     <div class="row col-sm-10 float-right">        
     
-        @foreach($products as $product)
+        @forelse($products as $product)
 
             <div class="col-sm-3 pt-3">
                 
@@ -39,10 +39,12 @@
                 </a>
                 
             </div>
-    
-    @endforeach
+        @empty
+            <h4>Não temos produtos com essa categoria :(</h4>
+        @endforelse
     </div>
 
 </div>
-{{$products->links()}}
+
+
 @endsection

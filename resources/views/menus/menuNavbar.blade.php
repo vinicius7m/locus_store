@@ -1,83 +1,95 @@
-<!-- Normal -->
-
-
-<!-- Modal de Cadastro -->
-<!-- <div class="modal fade modal-bd-example-modal-sm" id="modalCadastro" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Cadastrar-se</h5>
-            <button type="button" class="close" data-dismiss="modal">
-              <span>&times;</span>
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+            <div class="d-flex container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
             </button>
-          </div>
-          
-          <div class="modal-body">
-          
-            <center>    
-              <i class="fa fa-user-circle-o fa-5x mb-3"></i>
-            </center>
 
-            <form action="" method="POST">             
-              <fieldset class="form-group">
-              
-              <input name="name" type="name" class="form-control mb-1" maxlenght="40" placeholder="Nome" required>
+                <div class="mx-auto d-flex justify-content-center">
+                    <a class="navbar-brand justify-content-center" href="{{ url('/') }}">
+                        <img src="{{asset('img/logo.png')}}" width="40" height="30" class="img-fluid">
+                    </a>    
+                </div>
 
-              <input name="email" type="email" class="form-control mb-1" maxlenght="40" placeholder="E-mail" required>
+                <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
+                <form class="form-inline mx-auto my-2 mr-lg-5" action="{{ route('products.search') }}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <input type="text" class="form-control pr-5" name="name" placeholder=" Buscar produto...">
+                        
+                        <span class="input-group-btn">
+                            <button class="btn rounded-right bg-orange" type="submit"><i class="p-1 fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
 
-              <input name="password" type="password" class="form-control mb-1" placeholder="Senha" maxlenght="15" required>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(Página atual)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products.index') }}">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/who-are-we') }}">Quem somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/contact') }}">Contato</a>
+                    </li>
+                    
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.index') }}"><i class="p-1 fa fa-shopping-cart fa-2x"></i></a>
+                    </li>
+                </ul> 
+                
+                <ul class="navbar-nav">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="btn bg-orange" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="{{ route('register') }}">{{ __('Cadastro') }}</a>
+                    </li>
+                    
+                    @endif
+                    
+                    @else
 
-              <input name="confPass" type="password" class="form-control mb-1" maxlenght="15" placeholder="Confirmar senha" required>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-              </fieldset>
+                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('profiles.user.index', ['user' => Auth::user()->id ]) }}">
+                            Perfil
+                        </a>
+                        <a class="dropdown-item" href="{{ route('cart.shop') }}">
+                            Histórico de compra
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Sair') }}
+                        </a>
 
-              <input id="azul-escuro" type="submit" class="btn btn-block btn-dark" value="Cadastrar" name="enviar">
-              
-            </form>      
-          </div>
-          
-          <div class="modal-footer">
-            <button style="color: #1c1c1c;" class="btn btn-link" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin">Já tem uma conta? <strong>Fazer login</strong></button>
-          </div>
-        </div>
-      </div>            
-</div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                    </li>
 
- Modal de Login
- <div class="modal fade modal-bd-example-modal-sm" id="modalLogin" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Fazer login</h5>
-            <button type="button" class="close" data-dismiss="modal">
-              <span>&times;</span>
-            </button>
-          </div>
-          
-          <div class="modal-body">
-          
-            <center>    
-              <i class="fa fa-user-circle-o fa-5x mb-3"></i>
-            </center>
+                    @endguest
+                    
+                </ul>
 
-            <form action="" method="POST">             
-              <fieldset class="form-group">
-              
-              <input name="email" type="email" class="form-control mb-1" maxlenght="40" placeholder="E-mail" required>
-
-              <input name="password" type="password" class="form-control mb-1" placeholder="Senha" maxlenght="15" required>
-
-              </fieldset>
-
-              <input id="azul-escuro" type="submit" class="btn btn-block btn-dark" value="Login" name="enviar">
-              
-            </form>      
-          </div>
-          
-          <div class="modal-footer">
-            <button style="color: #1c1c1c;" class="btn btn-link" data-dismiss="modal" data-toggle="modal" data-target="#modalCadastro">Já tem uma conta? <strong>Fazer cadastro!</strong></button>
-          </div>
-
-        </div>
-      </div>            
-</div> -->
+                </div>
+            </div>
+        </nav>

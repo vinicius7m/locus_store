@@ -7,6 +7,56 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function indexProd() {
+        $categories = \App\Category::all(['id', 'name']);
+        $products = \App\Product::paginate('9');
+
+        return view('products', compact('products','categories'));
+    }
+
+    public function indexWelcome() {
+        $sql = 'select * from products limit 4';
+        $products = \DB::select($sql);
+
+        $sqls = 'select * from products order by id desc limit 1';
+        $productsone = \DB::select($sqls);
+
+        return view('welcome', compact('products','productsone'));
+    }
+
+    public function view($product) {
+        // $product = new \App\Product();
+        $product = \App\Product::find($product);
+
+        return view('view-product', compact('product'));
+    }
+
+    public function search(Request $request) {
+        
+        $query = \App\Product::query();
+
+        $term = $request->only('name');
+
+        foreach($term as $name => $value) {
+            if($value) {
+                $query->where($name,'LIKE','%'.$value.'%');
+            }
+        }
+        
+        $products = $query->paginate();
+
+        return view('search-product', compact('products', 'term'));
+
+    }
+
+    public function showCategory($category)
+    {
+        $products = \App\Product::all()->where('category_id', $category);
+        $category = new \App\Category();
+        $categories = $category->all(); 
+        return view('products-categories', compact('categories','products'));
+    }
+
     /**
      * Display a listing of the resource.
      *

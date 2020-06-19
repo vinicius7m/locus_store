@@ -13,16 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductSeeController@indexWelcome');
+// Rotas do user
+Route::get('/', 'Admin\ProductController@indexWelcome');
 
-Route::get('/products', 'ProductSeeController@index');
-Route::get('/products/{product}/view', 'ProductSeeController@view');
+// Update do user
+Route::get('/profiles/{user}/profile', 'UserController@index')->name('profiles.user.index');
+Route::get('/profiles/{user}/edit', 'UserController@edit')->name('profiles.user.edit');
+Route::post('/profiles/update/{user}', 'UserController@update')->name('profiles.user.update');
 
-Route::view('/about', 'about');
-Route::view('/shopping-cart', 'shoppingCart');
+Route::get('/products', 'Admin\ProductController@indexProd')->name('products.index');
+Route::post('/products/search','Admin\ProductController@search')->name('products.search');
+Route::get('/products/categories/{category}', 'Admin\ProductController@showCategory')->name('products.categories');
+Route::get('/products/{product}/view', 'Admin\ProductController@view');
 
+Route::get('/products/{product}/payment', 'ProductSeeController@view');
 
+Route::view('/contact', 'contact');
+Route::post('/contact/comment', 'CommentController@comment');
 
+Route::view('/who-are-we', 'who-are-we');
+
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart/add', function() {
+    return redirect()->route('cart.index');
+});
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
+Route::delete('/cart/delete', 'CartController@delete')->name('cart.delete');
+Route::post('/cart/finish', 'CartController@finish')->name('cart.finish');
+Route::get('/cart/shop', 'CartController@shop')->name('cart.shop');
+Route::post('/cart/cancel', 'CartController@cancel')->name('cart.cancel');
+Route::post('cart/discount', 'CartController@discount')->name('cart.discount'); 
+
+// Rotas do admin
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
     Route::get('/', function() {
         return view('admin.adminview');
@@ -45,6 +67,17 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
         Route::get('/destroy/{product}', 'ProductController@destroy')->name('destroy');
         
     });
+
+    Route::prefix('discounts')->name('discounts.')->group(function() {
+        Route::get('/', 'DiscountCuponController@index')->name('index');
+        Route::get('/create', 'DiscountCuponController@create')->name('create');
+        Route::post('/discount', 'DiscountCuponController@discount')->name('discount');
+        Route::get('{discount}/edit', 'DiscountCuponController@edit')->name('edit');
+        Route::post('/update/{discount}', 'DiscountCuponController@update')->name('update');
+        Route::get('/destroy/{discount}', 'DiscountCuponController@destroy')->name('destroy');
+        
+    });
+
 });
 
 

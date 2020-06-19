@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{route('admin.categories.create')}}" class=""><h1 class="mt-4 mb-4">Criar categoria</h1></a>   
+<a href="{{route('admin.categories.create')}}" class="text-dark"><h1 class="mt-4 mb-4">Criar categoria</h1></a>   
 
 <table class="table table-striped table-dark">
     <thead>
