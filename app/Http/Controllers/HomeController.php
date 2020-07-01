@@ -38,5 +38,10 @@ class HomeController extends Controller
         return view('shopping-cart');
     }
 
+    public function adminView() {
+        
+        return view('admin.adminview');
+        
+    }
     
 }

@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label class="form-group" for="description">Descrição</label>
-        <input class="form-control" type="text" name="description" id="description" required>
+        <input class="form-control" type="text" name="description" id="description" maxlength="255" required>
     </div>
 
     <div class="form-group">

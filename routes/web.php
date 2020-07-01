@@ -49,9 +49,8 @@ Route::post('/cart/payment', 'CartController@payment')->name('cart.payment');
 
 // Rotas do admin
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
-    Route::get('/', function() {
-        return view('admin.adminview');
-    });
+    Route::get('/', 'AdminController@adminView');
+
     Route::prefix('categories')->name('categories.')->group(function() {
         Route::get('/', 'CategoryController@index')->name('index');
         Route::get('/create', 'CategoryController@create')->name('create');

@@ -24,7 +24,7 @@
     @yield('content')
     
     
-    <footer class="page-footer font-small pt-4 bg-footer-foreground">
+    <footer class="page-footer font-small pt-4 bg-footer-foreground mt-5">
 
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left pt-3">
