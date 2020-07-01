@@ -12,7 +12,7 @@
             <div class="col-md-3 pt-3">
                 
                 <a href="{{ url("products/$product->id/view") }}">
-                <div class="card border-0">
+                <div class="card border">
                     
                     <img class="card-img-top" src="{{ url('storage/products/'.$product->image) }}" alt="">
                     <div class="card-body">
@@ -28,11 +28,11 @@
                 </a>
                 
             </div>
+            @empty
+                <a href="{{ url('/products') }}" class="h4 ml-3 text-secondary">Nenhum produto encontrado! Voltar</a>
+            @endforelse
     </div>
-    @empty
-        <a href="{{ url('/products') }}" class="h4 ml-3 text-secondary">Nenhum produto encontrado! Voltar</a>
-        
-    @endforelse
+    
     
 </div>
 
