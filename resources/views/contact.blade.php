@@ -24,9 +24,9 @@
                 <h3>Contato</h3>
                 
                 <p class="text-secondary">
-                    77 Baker Street <br>
-                    Parque dos Príncipes 87654 <br>
-                    França
+                    777 Fortaleza <br>
+                    Rua das Ameixas 87654 <br>
+                    Brasil
                 </p>
 
                 <p class="text-secondary">
