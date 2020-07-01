@@ -12,7 +12,7 @@
     
     <!-- Links locais -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" href="{{ asset('img/logo_orange.png') }}">
+    <link rel="icon" href="{{ asset('img/locus_logo.png') }}">
 
 
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,9 +20,12 @@
 <body>
     
     @include('menus.menuNavbar')
-    
+  
     @yield('content')
-
+    
+    
+    
+    
     <!-- Links locais -->
     <script src="{{ asset('js/cart.js') }}"></script>
     <!-- Links CDN -->

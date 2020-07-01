@@ -28,10 +28,12 @@
                 </a>
                 
             </div>
-        @empty
-            <h5>Nenhum produto encontrado! :(</h5>
-        @endforelse
     </div>
+    @empty
+        <a href="{{ url('/products') }}" class="h4 ml-3 text-secondary">Nenhum produto encontrado! Voltar</a>
+        
+    @endforelse
+    
 </div>
 
     @if(isset($filters))

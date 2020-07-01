@@ -47,26 +47,56 @@ body{
     transition: .5s;
     opacity: .5;
 }
-.inputBox .input{
-	position: relative;
-	width: 100%;
-	height: 50px;
-	background: transparent;
-	border: none;
-    outline: none;
-    font-size: 24px;
-    border-bottom: 1px solid rgba(0,0,0,.5);
 
+.input{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
-.focus .inputText{
-	transform: translateY(-30px);
-	font-size: 18px;
-	opacity: 1;
-	color: #00bcd4;
 
+.input-m {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 3px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
-textarea{
-	height: 100px !important;
+
+.input-t {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.textarea{
+    height: 100px !important;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 /* FIM CONTATO */
@@ -129,3 +159,28 @@ a:hover {
 .aviso {
     color: #d3d3d3;
 }
+
+.no-border-radius {
+    border-radius: 2px;
+}
+
+.bg-footer-background {
+    color: #18243d;
+    background-color: #dddddd;
+    transition: background-color 0.3s;
+}
+
+.bg-footer-foreground {
+    color: #1c2a48;
+    background-color: #eaeaea;
+    transition: background-color 0.3s;
+}
+
+.text-gray {
+    color: #4A4A4B;
+    transition: color 0.3s;
+}
+.text-gray:hover {
+    color: #1c1c1c;
+}
+

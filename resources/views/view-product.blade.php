@@ -21,12 +21,20 @@
               
                 <h2>R$ {{number_format($product->price, 2, ',', '.')}}</h3>
             
-                <div class="text-center mt-5">
+                <div class="text-center mt-5 row">
+                
+                    <form method="POST" action="{{ route('cart.add') }}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <button style="width: 350px;" type="submit" class="btn shadow no-border-radius bg-orange btn-lg mr-1">Comprar</button>
+                    </form>
+
                     <form method="POST" action="{{ route('cart.add') }}">
                         {{ csrf_field() }}
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button class="btn bg-orange btn-lg col-4">Comprar</button>
+                        <input type="hidden" name="id" value="{{ $product->id }}">    
+                        <button class="btn shadow no-border-radius text-orange btn-lg"><i class="fa fa-shopping-cart"></i></button>
                     </form>
+                
                 </div>
             </div>
 

@@ -15,9 +15,9 @@
 
             <h5 class="lead text-justify">
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. In distinctio laudantium eaque. Adipisci fugi
-                    at maxime possimus nesciunt quis sed velit impedit id. Expedita provident culpa rerum iure explicabo laborum
-                    praesentium!
+                Somos uma loja online que oferece o melhor para os nossos clientes, onde podemos atender todas as expectativas sobre artigos esportivos sempre de olho em equipamentos modernos e lançamentos.
+                Nossa loja oferece o que há de mais moderno e atual em todas as categorias de produtos.
+                Desde o princípio, nossa preocupação é oferecer os melhores produtos com os melhores preços aliado a um ótimo atendimento a você cliente, que é a pessoa mais importante para nós.
                 </p>
             </h5>
             

@@ -6,7 +6,7 @@
 
                 <div class="mx-auto d-flex justify-content-center">
                     <a class="navbar-brand justify-content-center" href="{{ url('/') }}">
-                        <img src="{{asset('img/logo.png')}}" width="40" height="30" class="img-fluid">
+                        <img src="{{asset('img/locus_logo.png')}}" width="40" height="30" class="img-fluid">
                     </a>    
                 </div>
 
@@ -14,10 +14,10 @@
                 <form class="form-inline mx-auto my-2 mr-lg-5" action="{{ route('products.search') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="row">
-                        <input type="text" class="form-control pr-5" name="name" placeholder=" Buscar produto...">
+                        <input type="text" class="input-t form-control pr-5 no-border-radius" name="name" placeholder="Buscar produto..." required>
                         
                         <span class="input-group-btn">
-                            <button class="btn rounded-right bg-orange" type="submit"><i class="p-1 fa fa-search"></i></button>
+                            <button class="btn rounded-right bg-orange no-border-radius" type="submit"><i class="p-1 fa fa-search"></i></button>
                         </span>
                     </div>
                 </form>
@@ -67,14 +67,14 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('profiles.user.index', ['user' => Auth::user()->id ]) }}">
+                    <div class="dropdown-menu dropdown-menu-right bg-orange" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item bg-orange" href="{{ route('profiles.user.index', ['user' => Auth::user()->id ]) }}">
                             Perfil
                         </a>
-                        <a class="dropdown-item" href="{{ route('cart.shop') }}">
+                        <a class="dropdown-item bg-orange" href="{{ route('cart.shop') }}">
                             Histórico de compra
                         </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item bg-orange" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             {{ __('Sair') }}

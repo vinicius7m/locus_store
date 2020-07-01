@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid mt-5">
 
-    <div class="col-sm-2 float-left text-left border">
+    <div class="col-sm-2 float-left text-left">
         <h4>Categorias</h4>
 
         @foreach($categories as $category)
@@ -23,7 +23,7 @@
             <div class="col-sm-3 pt-3">
                 
                 <a href="{{ url("products/$product->id/view") }}">
-                <div class="card border-0">
+                <div class="card border-1 p-3">
                     
                 <img class="card-img-top" src="{{ url('storage/products/'.$product->image) }}" alt="">
                     <div class="card-body">
@@ -44,5 +44,7 @@
     </div>
 
 </div>
+</div>
+
 {{$products->links()}}
 @endsection

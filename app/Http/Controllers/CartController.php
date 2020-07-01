@@ -18,7 +18,7 @@ class CartController extends Controller
             'user_id' => Auth::id()
         ])->get();
 
-        return view('cart', compact('orders'));
+        return view('cart.cart', compact('orders'));
     }   
 
     public function add() {
@@ -110,10 +110,29 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
+    public function payment() {
+        $this->middleware('VerifyCsrfToken');
+        $orders = \App\Order::where([
+            'status' => 'RE',
+            'user_id' => Auth::id()
+        ])->get();
+
+        $req = Request();
+        $idorder = $req->input('order_id');
+        $iduser = Auth::id();
+
+        return view('cart.payment', compact('orders'));
+    }
+
     public function finish() {
         $this->middleware('VerifyCsrfToken');
 
         $req = Request();
+
+        $data = $req->all();
+
+        \App\Payment::create($data);
+
         $idorder = $req->input('order_id');
         $iduser = Auth::id();
 
@@ -149,6 +168,8 @@ class CartController extends Controller
             'status' => 'PA'
         ]);
 
+        
+
         $req->session()->flash('success-message', 'Compra concluída com sucesso!');
 
         return redirect()->route('cart.shop');
@@ -167,7 +188,7 @@ class CartController extends Controller
             'user_id' => Auth::id()
         ])->orderBy('updated_at', 'desc')->get();
 
-        return view('historic', compact('shops', 'cancels'));
+        return view('cart.historic', compact('shops', 'cancels'));
 
     }
 

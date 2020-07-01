@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.appFooter')
 
 @section('title', 'Locus Sports')
 
 @section('content')
     <section class="banner">
         <a href="{{url('/products')}}">
-            <img src="{{ asset('img/banner.jpeg') }}" alt="" class="img-fluid w-100">
+            <img src="{{ asset('img/propaganda.png') }}" alt="" class="img-fluid w-100">
         </a>
     </section>
     
@@ -22,7 +22,7 @@
                 <img class="card-img-top" src="{{ url('storage/products/'.$product->image) }}" alt="">
                     <div class="card-body">
                         <h5 class="card-title text-left text-secondary">{{$product->name}}</h5>
-                        <h5 id="espaco" class="card-title text-center text-dark">R$ {{$product->price}}</h5>
+                        <h5 id="espaco" class="card-title text-center text-dark">R$ {{number_format($product->price, 2, ',','.')}}</h5>
                                     
                         <a type="button" id="preto" class="btn bg-orange btn-block" href="{{ url("products/$product->id/view") }}">
                             Visualizar

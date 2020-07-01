@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appFooter')
 
 @section('title', 'Histórico de compras')
 
@@ -6,7 +6,7 @@
 
     <div class="container">
         
-            <h4 class="mt-5">Minhas compras</h4>
+            <h4 class="mt-3">Minhas compras</h4>
 
             <br>
             @if(Session::has('success-message'))
@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            <h5 class="mt-3">Compras concluídas</h5>
+            <h5>Compras concluídas</h5>
             @forelse ($shops as $order)
                 <h5> Pedido: {{ $order->id }} </h5>
                 <h5> Criado em: {{ $order->created_at->format('d/m/Y H:i') }} </h5>
@@ -72,8 +72,7 @@
                         
                                 <td> {{ $order_product->product->name }} </td>
                                 <td> R$ {{ number_format($order_product->price, 2, ',', '.') }} </td>
-                                <td> R$ {{ number_format($order_product->discount, 2, ',', '.') }} </td>        
-
+                                <td> R$ {{ number_format($order_product->discount, 2, ',', '.') }} </td> 
                                 <td> R$ {{ number_format($total_product, 2, ',', '.') }} </td>
 
                             </tr>
@@ -163,7 +162,7 @@
                 </table>
 
             @empty
-                <h5 class="text-center">
+                <h5 class="text-center text-secondary">
                     Nenhuma compra foi cancelada.
                 </h5>
             @endforelse

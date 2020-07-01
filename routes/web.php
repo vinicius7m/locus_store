@@ -29,6 +29,7 @@ Route::get('/products/{product}/view', 'Admin\ProductController@view');
 Route::get('/products/{product}/payment', 'ProductSeeController@view');
 
 Route::view('/contact', 'contact');
+
 Route::post('/contact/comment', 'CommentController@comment');
 
 Route::view('/who-are-we', 'who-are-we');
@@ -37,12 +38,14 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/cart/add', function() {
     return redirect()->route('cart.index');
 });
+
 Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::delete('/cart/delete', 'CartController@delete')->name('cart.delete');
 Route::post('/cart/finish', 'CartController@finish')->name('cart.finish');
 Route::get('/cart/shop', 'CartController@shop')->name('cart.shop');
 Route::post('/cart/cancel', 'CartController@cancel')->name('cart.cancel');
-Route::post('cart/discount', 'CartController@discount')->name('cart.discount'); 
+Route::post('/cart/discount', 'CartController@discount')->name('cart.discount'); 
+Route::post('/cart/payment', 'CartController@payment')->name('cart.payment');
 
 // Rotas do admin
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {

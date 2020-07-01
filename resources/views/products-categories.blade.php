@@ -23,7 +23,7 @@
             <div class="col-sm-3 pt-3">
                 
                 <a href="{{ url("products/$product->id/view") }}">
-                <div class="card border-0">
+                <div class="card border-1 p-3">
                     
                 <img class="card-img-top" src="{{ url('storage/products/'.$product->image) }}" alt="">
                     <div class="card-body">

@@ -19,12 +19,12 @@
                     
                     <label for="" class="col-sm-2 col-form-label col-form-label">Nome</label>
                     <div class="col-sm-10">
-                        <input name="name" type="text" class="form-control form-control" id="" value="{{ Auth::user()->name }}" required>
+                        <input name="name" type="text" class="input-t" id="" value="{{ Auth::user()->name }}" required>
                     </div>
 
                     <label for="" class="col-sm-2 col-form-label col-form-label mt-3">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control form-control mt-3" id="" placeholder="" value="{{ Auth::user()->email }}" required>
+                        <input type="email" class="input-t mt-3" id="" placeholder="" value="{{ Auth::user()->email }}" required>
                     </div>
 
 

@@ -30,7 +30,7 @@
                 <a class="nav-link" href="{{ url('/admin/categories') }}">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/contact') }}">Usuários</a>
+                <a class="nav-link" href="{{ route('admin.discounts.index') }}">Descontos</a>
             </li> 
         </ul>
     </div>
